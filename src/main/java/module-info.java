@@ -8,7 +8,17 @@ module org.example.bharatintern {
     requires net.synedra.validatorfx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
+    requires org.json;
+    requires java.net.http;
 
     opens org.example.bharatintern to javafx.fxml;
     exports org.example.bharatintern;
+
+    exports task02;
+
+    opens task02 to javafx.fxml;
+    opens task01 to javafx.graphics;
+    exports task03;
+//    requires javafx.controls;
+//    requires javafx.fxml;
 }

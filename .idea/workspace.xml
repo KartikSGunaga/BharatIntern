@@ -5,13 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="26f50a4d-87c0-4f3b-b209-13ffa6471fb9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/task01/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/task01/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/task01/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/task01/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/task02/FetchWeather.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/task02/FetchWeather.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/task02/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/task02/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/task03/QuizApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/task03/QuizApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/bharatintern/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/bharatintern/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,9 +38,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2aqwsBJle2vb8J6FF4rwafpro4H" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -34,11 +49,28 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.FetchWeather.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.QuizApp.executor": "Run",
+    "Application.ToDoApp.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Kartik/OneDrive - Manipal Academy of Higher Education/spring/01-springboot/myCoolApp",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -50,7 +82,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1705059624071</updated>
-      <workItem from="1705059625207" duration="5000" />
+      <workItem from="1705059625207" duration="1030000" />
+      <workItem from="1705068778860" duration="9610000" />
+      <workItem from="1705109940269" duration="848000" />
+      <workItem from="1705114796515" duration="4320000" />
+      <workItem from="1705123633470" duration="5753000" />
+      <workItem from="1705140291358" duration="126000" />
+      <workItem from="1705381513501" duration="996000" />
     </task>
     <servers />
   </component>
