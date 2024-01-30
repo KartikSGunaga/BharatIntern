@@ -3,6 +3,7 @@ package task03;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -14,19 +15,19 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Scanner;
 
 public class QuizApp extends Application {
-    private Scanner scanner = new Scanner(System.in);
     private String apiKey = "XfiXXYwAxHmQIlgcA00wag==5is4FYIdgwMi6LZF";
     private String url = "https://opentdb.com/api.php?amount=1";
 
     private TextArea questionTextArea;
     private TextField answerTextField;
     private Button submitButton;
+    private Label feedbackLabel;
 
     private int questionNumber = 1;
     private int score = 0;
+
     public JSONObject getQuestion() throws Exception {
         HttpClient client = HttpClient.newHttpClient();
         URI uri = new URI(url);
@@ -35,13 +36,23 @@ public class QuizApp extends Application {
 
         if (response.statusCode() == 200) {
             JSONObject json = new JSONObject(response.body());
-//            System.out.println(json);
-            JSONArray results = json.getJSONArray("results");
-            JSONObject firstResult = results.getJSONObject(0);
+            int responseCode = json.getInt("response_code");
 
-            return firstResult;
+            if (responseCode == 0) {
+                JSONArray results = json.getJSONArray("results");
+                if (results.length() > 0) {
+                    JSONObject firstResult = results.getJSONObject(0);
+                    return firstResult;
+                } else {
+                    System.out.println("Oops! No results. Fetching another question.");
+                    return getQuestion();
+                }
+            } else {
+                System.out.println("Oops! Response code: " + responseCode);
+                throw new RuntimeException("Error calling API response: " + response.body());
+            }
         } else {
-            System.out.println("Oops!");
+            System.out.println("Oops! Error calling API response: " + response.body());
             throw new RuntimeException("Error calling API response: " + response.body());
         }
     }
@@ -57,9 +68,10 @@ public class QuizApp extends Application {
         questionTextArea = new TextArea();
         answerTextField = new TextField();
         submitButton = new Button("Submit Answer");
+        feedbackLabel = new Label();
 
         VBox layout = new VBox(20);
-        layout.getChildren().addAll(questionTextArea, answerTextField, submitButton);
+        layout.getChildren().addAll(questionTextArea, answerTextField, submitButton, feedbackLabel);
 
         Scene scene = new Scene(layout, 800, 500);
 
@@ -83,12 +95,17 @@ public class QuizApp extends Application {
             QuizApp quiz = new QuizApp();
             JSONObject response = quiz.getQuestion();
 
-            String question = response.getString("question");
-            String type = response.getString("type");
-            String category = response.getString("category");
+            if (response != null) {
+                String question = response.getString("question");
+                String type = response.getString("type");
+                String category = response.getString("category");
 
-            questionTextArea.setText("Question " + questionNumber + ": " + question +
-                    "\nQuestion Category: " + category + "; Question Type: " + type);
+                questionTextArea.setText("Question " + questionNumber + ": " + question +
+                        "\nQuestion Category: " + category + "; Question Type: " + type);
+            } else {
+                // Handle the situation when there are no results
+                feedbackLabel.setText("Oops! No questions available. Try again later.");
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -99,24 +116,29 @@ public class QuizApp extends Application {
             QuizApp quiz = new QuizApp();
             JSONObject response = quiz.getQuestion();
 
-            String correctAnswer = response.getString("correct_answer");
-            String reqAnswer = correctAnswer.toLowerCase().replace(" ", "");
-            String answer = answerTextField.getText().toLowerCase().replace(" ", "");
+            if (response != null) {
+                String correctAnswer = response.getString("correct_answer");
+                String reqAnswer = correctAnswer.toLowerCase().replace(" ", "");
+                String answer = answerTextField.getText().toLowerCase().replace(" ", "");
 
-            if (answer.equals(reqAnswer)) {
-                score++;
-                System.out.println("\nCorrect!");
-                System.out.println("The answer is: " + correctAnswer);
-            } else {
-                System.out.println("\nWrong!");
-                System.out.println("The answer is: " + correctAnswer);
-            }
+                String feedbackMessage;
+                if (answer.equals(reqAnswer)) {
+                    score++;
+                    feedbackMessage = "Correct! The answer is: " + correctAnswer;
+                } else {
+                    feedbackMessage = "Wrong! The answer is: " + correctAnswer;
+                }
 
-            questionNumber++;
-            if (questionNumber <= 10) {
-                displayQuestion();
+                feedbackLabel.setText(feedbackMessage);
+
+                questionNumber++;
+                if (questionNumber <= 10) {
+                    displayQuestion();
+                } else {
+                    endQuiz();
+                }
             } else {
-                endQuiz();
+                feedbackLabel.setText("Oops! No questions available. Try again later.");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -124,8 +146,6 @@ public class QuizApp extends Application {
     }
 
     private void endQuiz() {
-        System.out.println("Your score: " + score);
-        System.out.println("Thank you for playing!");
-        System.exit(0);
+        feedbackLabel.setText("Your score: " + score + "\nThank you for playing!");
     }
 }

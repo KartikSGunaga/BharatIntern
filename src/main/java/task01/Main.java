@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         ToDoApp.launch(ToDoApp.class, args);
         System.out.println("Welcome to Kartik's ToDo App!");
@@ -12,7 +13,7 @@ public class Main {
         boolean flag = true;
 
         todo.menu();
-        while(flag) {
+        while (flag) {
             System.out.println("\nChoose your choice(1-6): ");
             int choice = scanner.nextInt();
 
@@ -21,7 +22,10 @@ public class Main {
                     todo.menu();
                     break;
                 case 2:
-                    todo.createTask();
+                    // Pass the task name as an argument
+                    System.out.println("\nEnter the task name: ");
+                    taskName = scanner.nextLine();
+                    todo.createTask(taskName);
                     break;
                 case 3:
                     System.out.println("\nEnter the task name you wish to search: ");

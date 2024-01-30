@@ -48,7 +48,7 @@ public class Main extends Application {
 
         layout.getChildren().addAll(apiKeyInput, cityInput, fetchButton, resultLabel);
 
-        Scene scene = new Scene(layout, 800, 600);
+        Scene scene = new Scene(layout, 800, 350);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

@@ -10,6 +10,7 @@ module org.example.bharatintern {
     requires eu.hansolo.tilesfx;
     requires org.json;
     requires java.net.http;
+    requires javafx.graphics;
 
     opens org.example.bharatintern to javafx.fxml;
     exports org.example.bharatintern;
